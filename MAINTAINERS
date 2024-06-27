@@ -3980,7 +3980,7 @@ R:	Song Liu <song@kernel.org>
 R:	Yonghong Song <yonghong.song@linux.dev>
 R:	John Fastabend <john.fastabend@gmail.com>
 R:	KP Singh <kpsingh@kernel.org>
-R:	Stanislav Fomichev <sdf@google.com>
+R:	Stanislav Fomichev <sdf@fomichev.me>
 R:	Hao Luo <haoluo@google.com>
 R:	Jiri Olsa <jolsa@kernel.org>
 L:	bpf@vger.kernel.org
@@ -12382,7 +12382,6 @@ F:	drivers/video/backlight/ktz8866.c
 
 KVM PARAVIRT (KVM/paravirt)
 M:	Paolo Bonzini <pbonzini@redhat.com>
-R:	Wanpeng Li <wanpengli@tencent.com>
 R:	Vitaly Kuznetsov <vkuznets@redhat.com>
 L:	kvm@vger.kernel.org
 S:	Supported
@@ -22746,7 +22745,7 @@ M:	Jarkko Sakkinen <jarkko@kernel.org>
 R:	Jason Gunthorpe <jgg@ziepe.ca>
 L:	linux-integrity@vger.kernel.org
 S:	Maintained
-W:	https://gitlab.com/jarkkojs/linux-tpmdd-test
+W:	https://codeberg.org/jarkko/linux-tpmdd-test
 Q:	https://patchwork.kernel.org/project/linux-integrity/list/
 T:	git git://git.kernel.org/pub/scm/linux/kernel/git/jarkko/linux-tpmdd.git
 F:	Documentation/devicetree/bindings/tpm/
