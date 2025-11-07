@@ -1,4 +1,4 @@
-/* SPDX-License-Identifier: GPL-2 */
+/* SPDX-License-Identifier: GPL-2.0-only */
 
 /*
  *   Hardware driver for NI Mite PCI interface chip
@@ -34,9 +34,9 @@ struct mite_struct {
 
 	struct pci_dev *pcidev;
 	unsigned long mite_phys_addr;
-	void *mite_io_addr;
+	void __iomem *mite_io_addr;
 	unsigned long daq_phys_addr;
-	void *daq_io_addr;
+	void __iomem *daq_io_addr;
 
 	int DMA_CheckNearEnd;
 
@@ -60,15 +60,6 @@ void mite_cleanup(void);
 int mite_setup(struct mite_struct *mite);
 void mite_unsetup(struct mite_struct *mite);
 void mite_list_devices(void);
-
-int mite_dma_tcr(struct mite_struct *mite);
-
-void mite_dma_arm(struct mite_struct *mite);
-void mite_dma_disarm(struct mite_struct *mite);
-
-void mite_dump_regs(struct mite_struct *mite);
-void mite_setregs(struct mite_struct *mite, unsigned long ll_start, int chan, int dir);
-int mite_bytes_transferred(struct mite_struct *mite, int chan);
 
 #define CHAN_OFFSET(x)			(0x100 * (x))
 
@@ -228,15 +219,15 @@ int mite_bytes_transferred(struct mite_struct *mite, int chan);
 #define MITE_AMHOST_A24_BLOCK	        0x3b
 
 enum mite_registers {
-	MITE_IODWBSR = 0xc0, //IO Device Window Base Size Register
-	MITE_CSIGR = 0x460,	//chip signature
-	MITE_IODWBSR_1 = 0xc4, // IO Device Window Base Size Register 1 (used by 6602 boards)
+	MITE_IODWBSR = 0xc0,	// IO Device Window Base Size Register
+	MITE_CSIGR = 0x460,	// chip signature
+	MITE_IODWBSR_1 = 0xc4,	// IO Device Window Base Size Register 1 (used by 6602 boards)
 	MITE_IODWCR_1 = 0xf4
 };
 
 enum MITE_IODWBSR_bits {
-	WENAB = 0x80,	// window enable
-	WENAB_6602 = 0x8c // window enable for 6602 boards
+	WENAB = 0x80,		// window enable
+	WENAB_6602 = 0x8c	// window enable for 6602 boards
 };
 
 #endif
