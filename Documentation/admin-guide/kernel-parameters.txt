@@ -125,6 +125,8 @@ Kernel parameters
 			may result in duplicate corrected error reports.
 			nospcr -- disable console in ACPI SPCR table as
 				default _serial_ console on ARM64
+			spcr -- enable console in ACPI SPCR table as
+				default _serial_ console on x86
 			For ARM64, ONLY "acpi=off", "acpi=on", "acpi=force" or
 			"acpi=nospcr" are available
 			For RISCV64, ONLY "acpi=off", "acpi=on" or "acpi=force"
@@ -1968,6 +1970,9 @@ Kernel parameters
 				 not use on production kernels. The boot
 				 param "no_hash_pointers" is an alias for
 				 this mode.
+
+			For controlling hashing dynamically at runtime,
+			use the "kernel.kptr_restrict" sysctl instead.
 
 	hashdist=	[KNL,NUMA] Large hashes allocated during boot
 			are distributed across NUMA nodes.  Defaults on
@@ -4036,6 +4041,7 @@ Kernel parameters
 					       spectre_v2_user=off [X86]
 					       srbds=off [X86,INTEL]
 					       ssbd=force-off [ARM64]
+					       tsa=off [X86,AMD]
 					       tsx_async_abort=off [X86]
 					       vmscape=off [X86]
 
@@ -6623,6 +6629,11 @@ Kernel parameters
 
 	rootflags=	[KNL] Set root filesystem mount option string
 
+	rseq_slice_ext= [KNL] RSEQ based time slice extension
+			Format: boolean
+			Control enablement of RSEQ based time slice extension.
+			Default is 'on'.
+
 	initramfs_options= [KNL]
                         Specify mount options for for the initramfs mount.
 
@@ -8436,6 +8447,11 @@ Kernel parameters
 			crash analysis tools and Xen tools for doing domain
 			save/restore/migration must be enabled to handle larger
 			domains.
+
+	xen_console_io	[XEN,EARLY]
+			Boolean option to enable/disable the usage of the Xen
+			console_io hypercalls to read and write to the console.
+			Mostly useful for debugging and development.
 
 	xen_emul_unplug=		[HW,X86,XEN,EARLY]
 			Unplug Xen emulated devices
